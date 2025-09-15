@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Example</title>
+</head>
+<body>
+
+<!-- Button to toggle the menu -->
+<button class="menu-toggle" id="menu-toggle">☰</button>
+
+<!-- Navigation menu -->
+<nav dir="rtl" class="fixed-menu" id="fixed-menu">
+    <ul>
+        <li><a href="generalifno.html">רקע כללי</a></li>
+        <li><a href="hativa-goals.html">יעדי חטיבה</a></li>
+        <li><a href="report1.html">דו״ח 1</a></li>
+        <li><a href="information.html">מידע לאנשי קבע</a></li>
+        <li><a href="info-soldiers.html">מידע לחיילי חובה</a></li>
+        <li><a href="kaveret.html">כוורת, חדר כושר וזמני ארוחות</a></li>
+        <li><a href="yohalam.html">יוהל״ם</a></li>
+        <li><a href="education.html" style="font-size: 34px;">חינוך</a></li>
+        <li><a href="bagruyot.html">השלמת בגרויות</a></li>
+        <li><a href="tagat.html">תג״ת</a></li>
+        <li><a href="tzvi.html">קורס צב״י</a></li>
+        <li><a href="olpanit.html">אולפנית</a></li>
+        <li><a href="nativ.html">נתיב</a></li>
+        <li><a href="rishum-plili.html">מחיקת רישום פלילי</a></li>
+        <li>
+            <a href="#" id="gdud41-toggle">גדוד 41</a>
+            <ul id="gdud41-submenu" class="submenu" style="display: none;">
+                <li><a href="direction41.html">דרכי הגעה</a></li>
+                <li><a href="magad41.html">דבר מפקד הגדוד</a></li>
+                <li><a href="klita41.html">נוהל קליטה ביחידה</a></li>
+                <li><a href="opentime41.html">זמני פתיחה</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="gdud47-toggle">גדוד 47</a>
+            <ul id="gdud47-submenu" class="submenu" style="display: none;">
+                <li><a href="direction47.html">דרכי הגעה</a></li>
+                <li><a href="magad47.html">דבר מפקד הגדוד</a></li>
+                <li><a href="klita47.html">נוהל קליטה ביחידה</a></li>
+                <li><a href="opentime47.html">זמני פתיחה</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- JavaScript code -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Main menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('fixed-menu');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function(event) {
+            menu.classList.toggle('open');
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (menu.classList.contains('open') && !menu.contains(event.target) && event.target !== menuToggle) {
+                menu.classList.remove('open');
+            }
+        });
+    }
+
+    // Submenu toggles
+    const gdud41Toggle = document.getElementById('gdud41-toggle');
+    const gdud41Submenu = document.getElementById('gdud41-submenu');
+    
+    const gdud47Toggle = document.getElementById('gdud47-toggle');
+    const gdud47Submenu = document.getElementById('gdud47-submenu');
+
+    gdud41Toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        gdud41Submenu.style.display = gdud41Submenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    gdud47Toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        gdud47Submenu.style.display = gdud47Submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>
+
+</body>
+</html>

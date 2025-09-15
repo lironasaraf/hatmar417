@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>אולפנית</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+        <h1>אולפנית</h1>
+
+        <p>
+            קורס שמטרתו שיפור רמת העברית, הקניית מילים גבוהות, הרחבת ידע
+            העולם ומתן כלים אורייניים ושפתיים להסתגלות בחברה הישראלית
+            ובמסגרת הצבאית, תוך חיזוק תחושת השייכות, השליחות, והחיבור
+            למשימה הצבאית.
+        </p>
+        <p>
+            הקורס אורך שלושה שבועות ומיועד עבור חיילים עולים ובני מיעוטים שסימול העברית שלהם הינו 7 ומטה.
+            האולפנית מתקיימת בפיקוד המרכז (ובפיקודים השונים), כאשר בכל אולפנית מתאפיינת ברמת עברית שבהתאם אליה מזומנים החיילים הפוטנציאליים.
+            רמת העברית של החיילים נקבעת לפי מבחן רמה שעליהם לעבור במשרד החינוך ביחידה.
+        </p>
+        <p>
+            כשבועיים לפני פתיחת האולפנית מתקיים כנס מקדים וממיין.
+        </p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>מידע לחיילי חובה</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers" style="font-family: 'Karantina', sans-serif; color: #483c32;">
+                    <h1 style="font-family: 'Karantina', sans-serif; color: #483c32;">מידע לחיילי חובה</h1>
+
+            <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">תנאי השירות (ת״ש)</h2>
+            <p>עיקר הפעילות בתחום ת"ש כולל סיוע לחיילים הנמצאים במצוקה כלכלית/חיילים בודדים. הינך נדרש/ת כמובן לשתף את מפקדיך בבעיות כאלו, באם ישנן.</p>
+            <p>בכל שאלה או בעיה הקשורה לתנאי השירות שלך, פנה/י למשרד הת"ש הממוקם בסמוך למשרדי המשא"ן.</p>
+
+
+            <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">תנאי שירות חיילי חובה</h2>
+
+            <h3>אוכלוסייה מיוחדת:</h3>
+            <ul>
+                <li>חייל בודד</li>
+                <li>חייל עולה חדש</li>
+                <li>חייל נשוי</li>
+                <li>חייל איתן</li>
+                <li>חייל זכאי לתשלומי משפחה או אח לחייל זכאי לתשלומי משפחה</li>
+                <li>חייל בן למשפחה שכולה</li>
+                <li>חייל הזכאי להקלות התנאי שירות (הת"ש)</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">החייל הבודד:</h3>
+            <ul>
+                <li>חייל בודד מובהק – חייל שהוריו אינם גרים בארץ.</li>
+                <li>חייל בודד יתום – חייל שהוריו אינם חיים.</li>
+                <li>חייל בודד חסר עורף משפחתי – חייל שמערכת היחסים עם הוריו לא תקינה ובלתי ניתנת לגישור.</li>
+            </ul>
+            <p><strong>למה זכאי החייל הבודד?</strong></p>
+            <ul>
+                <li>תוספת שכר ע"ס 540 ₪.</li>
+                <li>תווי חג ע"ס 400 ₪ בראש השנה ובפסח.</li>
+                <li>זכאות חודשית לתווי קנייה ע"ס 150 ₪ בחוגר.</li>
+                <li>יום סידורים אחת לחודשיים בסדיר ואחת לחודש בהכשרה (יש לעדכן מ. ת"ש לשם הזנה).</li>
+                <li>סיוע בהובלות ציוד אישי בעת מעבר דירה.</li>
+                <li>מימון טיסה לביקור המשפחה בחו"ל – פעם בשירות.</li>
+                <li>חופשה מיוחדת של 30 ימים לביקור המשפחה בחו"ל – פעם אחת בשנת שירות.</li>
+                <li>חופשה מיוחדת של 8 ימים בעת ביקור הורה בארץ – פעם אחת בשנת שירות.</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">הטבות דיור לחייל הבודד:</h3>
+            <ul>
+                <li>דירת אל"ח.</li>
+                <li>בית החייל.</li>
+                <li>שכר דירה.</li>
+                <li>אימוץ בקיבוץ.</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">הת"ש – הקלות בתנאי שירות:</h3>
+            <p>הת"ש היא בקשה לנוכחות החייל בביתו עקב בעיה רפואית/ נפשית של אחד מבני משפחתו המצריך את סיוע החייל בבית.</p>
+            <ul>
+                <li>הת"ש 1: לא למערך הלוחם.</li>
+                <li>הת"ש 2: 2 לילות לינה בבית בשבוע.</li>
+                <li>הת"ש 3: 3 לילות לינה בבית בשבוע.</li>
+                <li>הת"ש 5: 5 לילות לינה בבית בשבוע.</li>
+                <li>הת"ש 7: לינת בית כולל שבתות וחגים.</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">תשלומי משפחה:</h3>
+            <p>תשלומי משפחה נועדו להבטיח את קיומן המינימלי של משפחות החיילים הנזקקות לסיוע. התשמ"ש הוא תשלום חודשי הנכנס לחשבון המוטב – הורי החייל או אשת/בעל החייל/ת. התשלום נע בין 171-4,502 ₪ בחודש. הזכאות מותנית בעמידה בקריטריונים.</p>
+            <p><strong>למה יהיה זכאי חייל תשמ"ש?</strong></p>
+            <ul>
+                <li>זכאות חודשית לתווי קנייה ע"ס 150 ₪ בחוגר.</li>
+                <li>מענק למשכורת, בהתאם לרמת הפעילות.</li>
+                <li>תווי חג ע"ס 400 ₪ בראש השנה ובפסח.</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">היתר עבודה:</h3>
+            <p>היתר עבודה מהווה תעודת ביטוח לחייל בעבודתו מחוץ למסגרת הצבאית. הבקשה תיבחן לאחר הבאת אישורים נדרשים ובאישור מפקדים.</p>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">חופשות מיוחדות:</h3>
+            <ul>
+                <li>מיוחדת אשפוז: עד 58 יום.</li>
+                <li>מיוחדת אישית: עד 45 יום.</li>
+                <li>מיוחדת כלכלית: עד 45 יום.</li>
+                <li>מיוחדת אבל: 3-7 ימים.</li>
+                <li>מיוחדת לימודים: עד 4 ימים.</li>
+            </ul>
+            <p>כל חופשה מיוחדת מותנית בהצגת אישורים ובאישור מפקדים.</p>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">סיוע כלכלי:</h3>
+            <p>הערוצים בהם ניתן לסייע לחייל:</p>
+            <ul>
+                <li>מענק – סכום כסף אשר נכנס לחשבון החייל.</li>
+                <li>מענק בזק – מענק הנכנס תוך 72 שעות לחשבון החייל.</li>
+                <li>הלוואה – עד 1,200 ₪ שיוחזרו לצבא בפריסה חודשית של 100 ₪ בניכוי מהמשכורת.</li>
+                <li>הלוואה מיידית – תיכנס תוך 72 שעות לחשבון החייל.</li>
+                <li>מוצרי אל"ח – ריהוט ומוצרי חשמל.</li>
+                <li>תווי קנייה – כסף הנכנס לחוגר החייל וניתן למימוש ברשתות שופרסל.</li>
+            </ul>
+
+            <h3 style="font-family: 'Karantina', sans-serif; color: #483c32;">חופשות</h3>
+            <p>לכל חייל בשירות חובה מגיעים 18 ימי חופשה שנתית, ובנוסף סל של 5 ימים לשיקול דעת מפקד ישיר. חופשת שחרור הינה 14 ימים הניתנים לחייל לפני שחרורו. ניתן להתעדכן בזכאות / מימוש ימי החופשה למול המפקדים ומשרד כ"א במפקדת הגדוד.</p>
+
+
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

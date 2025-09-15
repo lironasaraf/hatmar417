@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title class="title">חטמ״ר 417</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="#" class="logo">חטמ״ר 417</a>
+    </header>
+
+    <!-- Home -->
+    <section class="home" id="home">
+        <div dir="rtl" class="home-text">
+            <div class="main-text">
+                <img src="pictures/hatmar2.png" alt="mainlogo" class="mainlogo">
+            </div>
+            <div style="direction: rtl; font-family: Arial, sans-serif; line-height: 1.6; padding:12px; color: #483c32; display: flex; flex-direction: column; align-items: center;">
+                <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">חיילים ומפקדים יקרים,</h2>
+                <p style="margin-top: 10px">ברוכים הבאים לחטיבת הבקעה והעמקים, חבל הארץ עליו נבחרנו להגן.</p>
+                <p>על האדמה בה אנו נמצאים התרחשו קרבות הראויים ובהם סיפורי גבורה רבים, אשר מהווים חלק בלתי נפרד מההיסטוריה של מדינת ישראל והעם היהודי.</p>
+                <p>למדו על המרחב בו אנו נמצאים וזכרו-כי תפקידנו להבטיח את ההגנה על ההתיישבות!</p>
+                <p>סומך עליכם ומאחל לכם עשייה פורה ומשמעותית בתפקידכם.</p>
+                <p style="font-weight: bold; text-align: center;">-חטיבת הגנה פורצת גבולות-</p>
+                <p style="direction: ltr; margin-top: 30px; margin-right: 50%">אל״ם,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;גלעד שריקי<br>מפקד חטיבת הבקעה והעמקים</p>
+            </div>
+
+            <div class="comandor" style="width: 100%; height: 200px;">
+                <img src="pictures/firstfoto.jpeg" alt="" class="firstfoto">
+            </div>
+            <div class="emptydiv" style="width: 100%; height: 200px;"></div>
+            <section>
+                <div class="hatikva" style="display: flex; justify-content: space-evenly; flex-direction: row; align-items: baseline; gap: 20px;">
+                    <img id="myImage" src="pictures/hatikva.jpeg" alt="התקווה" style="width: 45%; max-width:200px; cursor:pointer" onclick="openModal()">
+                    <img id="myImage2" src="pictures/roah.jpeg" alt="רוח צה״ל" style="width:45%; max-width:200px; cursor:pointer" onclick="openModal2()">
+                </div>
+            </section>
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+            <div id="myModal2" class="modal">
+                <span class="close" onclick="closeModal2()">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+        </section>
+
+        <script>
+            function openModal() {
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+                var img = document.getElementById("myImage");
+                modal.style.display = "block";
+                modalImg.src = img.src.replace("small-image.jpg", "large-image.jpg");
+                captionText.innerHTML = img.alt;
+            }
+            function openModal2() {
+                var modal = document.getElementById("myModal");
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+                var img = document.getElementById("myImage2");
+                modal.style.display = "block";
+                modalImg.src = img.src.replace("small-image.jpg", "large-image.jpg");
+                captionText.innerHTML = img.alt;
+            }
+            function closeModal2() {
+                var modal = document.getElementById("myModal2");
+                modal.style.display = "none";
+            }
+            function closeModal() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                var modal = document.getElementById("myModal");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                var modal2 = document.getElementById("myModal2");
+                if (event.target == modal2) {
+                    modal2.style.display = "none";
+                }
+            }
+        </script>
+
+    <!-- Menu Placeholder -->
+    <div id="menu-placeholder"></div>
+
+    <!-- Include Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu) {
+                                    menu.style.transform = menu.style.transform === 'translateX(0%)' ? 'translateX(100%)' : 'translateX(0%)';
+                                    event.stopPropagation();
+                                }
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu && menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100);
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+    <script src="main.js" defer></script>
+
+    </body>
+</html>
+

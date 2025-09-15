@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>מידע לחיילי חובה</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                menu.style.transform = menu.style.transform === 'translateX(0%)' ? 'translateX(100%)' : 'translateX(0%)';
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100);
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+        <h1>רקע על חטיבת הבקעה והעמקים</h1>
+
+        <div dir="rtl" class="comandor" style="width: 100%; height: 200px; color: #483c32;">
+            <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">רקע חטיבת הבקעה והעמקים</h2>
+            <p>ב-03.11.1967 - הוחלט על הקמת החטיבה המרחבית - חטיבת הבקעה, שהתפרסה לאורך בקעת הירדן ופעלה למניעת חדירת מחבלים מעבר הירדן.</p>
+            <p>חטיבת הבקעה הוקמה מתוך חטיבת הצנחנים במילואים 80. למפקד החטיבה הראשון מונה אל"מ רפאל איתן.</p>
+            <p>אל החטיבה הוכפפו כוחות נוספים על מנת לבצע את פעולות הביטחון השוטף בגזרה.</p>
+            <p>בשנת 2003 הורחבה גזרת האחריות החטיבה לכיוון צפון והחטיבה הפכה לחטיבת הבקעה והעמקים.</p>
+            <p>כיום חטיבת הבקעה והעמקים מגנה בגזרתה ממצדה בדרום ועד נחל מיצר בצפון, מסכלת טרור בגזרתה ומונעת חדירות בגבול המזרחי.</p>
+            <p>כל זאת על מנת לאפשר ביטחון ותחושת ביטחון לתושביה ולעוברים בגזרה.</p>
+            <img src="pictures/nof.jpeg" alt="חטיבת הבקעה והעמקים" class="firstfoto">
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

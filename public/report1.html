@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>דו״ח 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section class="content" id="content">
+        <div dir="rtl" class="content-text" style="gap: 10px; color:#483c32">
+            <div class="report-title" style="display: flex; flex-direction: row; justify-content: space-between;">
+                
+            <h1 style="margin-top: 20px;font-family: 'Karantina', sans-serif; color: #483c32;">דו״ח 1</h1>
+            <img src="icons/doh1.jpg" alt="report1" class="report1" style="width: 50px; height: 50px;">
+            </div>
+
+            <p style="margin-top: 20px;">עליכם להוריד את אפליקציית הדו״ח 1 של צה״ל.</p>
+            <p style="margin-top: 20px;">אז איך זה עובד? בשעות הבוקר, כל חייל מדווח בלחיצה אחת באפליקציה, באזור האישי באתר צה"ל או בדפדפן על הנוכחות שלו באותו יום - נוכח ביחידה/במשימה מחוץ ליחידה/ביום מחלה/יום חופשה מסוגים שונים.</p>
+            <p style="margin-top: 20px;">לאחר הדיווח, המפקד הישיר נכנס לאפליקציה, ומאשר את הדיווחים.</p>
+
+            <div class="app-links" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+            <a href="https://apps.apple.com/il/app/%D7%93%D7%95%D7%97-1/id1493914815" class="btn">הורדה מחנות האפליקציות של אייפון</a>
+            <a href="https://play.google.com/store/apps/details?id=il.idf.doch1&hl=iw" class="btn">הורדה מחנות האפליקציות של אנדרואיד</a>
+            <a href="https://one.prat.idf.il/login" class="btn">אתר מותאם לפלאפונים ניידים</a>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap:10px; border: 1px solid black; align-items: center ; font-size: 10px; margin-top: 20px;">
+                <h1>שימו לב!</h1>
+                <h1 style="display: flex;justify-content: center;text-align: -webkit-center;">אחר הזנת ״מחלה״ ישנם 30 ימים להעלות לאתר אסמכתא.</h1>
+                <h1 style="display: flex;justify-content: center;text-align: -webkit-center;">במידה ולא הועלתה, הדיווח ישתנה אוטומטית ל-״חופש״.</h1>
+            </div>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

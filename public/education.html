@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>חינוך</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+                <h1 style="font-family: 'Karantina', sans-serif; color: #483c32;">חינוך</h1>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">שפה</h2>
+        <p>ידיעת השפה העברית מאפשרת השתלבות ביחידה מבחינה חברתית ומקצועית תוך יצירת תקשורת ברורה ואיכותית עם מפקדים ועמיתים. שליטה טובה בשפה העברית מאפשרת לחיילים עולים ובני מיעוטים להתקדם ולהגיע לתפקידים צבאיים שונים ולקורסי פיקוד וקצונה.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">גיור</h2>
+        <p>מאפשר לחייל אשר אינו יהודי להתגייר תוך למידה על ערכים ציוניים ורכישת זיקה לדת היהודית. הקורס נותן הזדמנות לרכישת ידע משמעותי על המסורת היהודית באופן שלא ניתן לרכוש בתהליך הגיור באזרחות. מעצים את השייכות של החייל למדינה ולהמשך השירות הצבאי בפרט.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">תעודת 12 שנו״ל</h2>
+        <p>חייל אשר השלים והרחיב את השכלתו במהלך השירות הינו חייל בעל פוטנציאל גבוה יותר להשתלבות מיטבית במערכת הצבאית והאזרחית. רמת ההשכלה הבסיסית עלתה - תעודת סיום 12 שנות לימוד מהווה תנאי קבלה לרוב מקומות העבודה ולרוב הקורסים לרכישת מקצוע.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">איתור לקורסים</h2>
+        <p>חיילים מאותרים לקורסים ע״פ 3 נתונים משמעותיים:</p>
+        <ol>
+            <li>רמת השליטה בשפה העברית.
+                <ul>
+                    <li>סימול בצו הראשון (2-9)</li>
+                    <li>מבחן רמה המתבצע בקליטה לבסיס ע״י מש״קית העברית</li>
+                </ul>
+            </li>
+            <li>רמת ההשכלה הרשומה בנתוני משרד החינוך.
+                <ul>
+                    <li>ספירה טכנית של מספר השנים בהן למד החייל במסגרת חינוך כלשהיא (1-12)</li>
+                </ul>
+            </li>
+            <li>במידה והחייל אינו מוגדר כיהודי על פי ההלכה ומעוניין להתגייר.</li>
+        </ol>
+
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+/*google font*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900');
+/*fontawesome*/
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Reggae+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Solitreo&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Solitreo&display=swap');
+
+
+@font-face {
+    font-family: 'reggae one';
+    src: url();
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Assistant", sans-serif;
+}
+
+:root{
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-dark-color: #10121A;
+    --background-dark-grey: #191D2B;
+    --border-color: #2e344e;
+    --background-light-color: #F1F1F1;
+    --white-color: #FFF;
+    --font-light-color: #a4acc4;
+    --font-dark-color: #313131;
+    --font-dark-color-2: #151515;
+    --text-color:var(--font-dark-color)
+}
+
+section{
+    /* padding: 50px 10%; */
+}
+
+img{
+    max-width: 100%;
+}
+
+.logoHatmar{
+    width:25px;
+    height: 25px;
+}
+
+body{
+    background-color: white;
+    color: var(--font-light-color);
+    /* background: url(pictures/bacground.png) center; */
+    background-color:"#f8f4ea";
+}
+
+*::selection{
+    color: #fff;
+    background: var(--main-color);
+}
+
+/* custom scroll bar */
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-
+{
+    background: transparent
+}
+
+html::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+    border-radius: 5rem;
+}
+
+header{
+    background-color: #6c757d;
+    height: 3rem;
+    width: 100%;
+    position: fixed;
+    top:0;
+    right:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: white;
+    padding: 18px 10%;
+    transition: 0.2s;
+}
+
+
+
+@media screen and (max-width: 991px){
+    header{
+        padding: 18px 5%;
+        flex-wrap: wrap;
+    }
+    
+}
+
+.logo{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #483c32;
+    margin-right: 93%;
+    font-family: 'Karantina', sans-serif;
+    height: 23px;
+}
+
+@media screen and (max-width: 991px){
+    .logo{
+        margin-right: 75%;
+    }
+    
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    
+}
+
+.navbar a{
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.navbar a:hover{
+    background: var(--text-color);
+    color: #fff;
+}
+
+#menu-icon{
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+
+}
+.home{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 100px;
+   
+}
+
+.home-text span{
+    font-size:1.4rem;
+    font-weight: 600;
+}
+
+.home-text h1{
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 1rem 0;
+    font-family: 'assistant', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-text{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    background-color: #483c32db;;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.fixed-menu ul {
+    margin: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: 'Karantina', sans-serif;
+    margin-top: 23%;
+}
+
+.fixed-menu ul li {
+    margin: 20px 0;
+    font-family: 'Karantina', sans-serif;
+}
+
+.fixed-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Karantina', sans-serif;
+}
+.menu-div{
+    display: flex;
+    flex-direction: row; 
+    width: 150px; 
+    gap: 10px;
+}
+.menu-div img{
+    width: 30px;
+    height: 30px;
+}
+.menu-div a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Karantina', sans-serif;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #483c32;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    .fixed-menu {
+        transform: translateX(0);
+    }
+}
+
+.main-logo {
+    width: 100px;
+}
+
+/*animation when i scroll down the image will fade in*/
+.firstfoto{
+    animation: fadeIn 2s;
+    opacity: 0.5;
+
+}
+
+/* .content-text {
+    padding-top: 30px
+} */
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.information{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px;
+
+}
+.yohalam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px;
+
+}
+
+.info_soldiers{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px;
+    color: #483c32;
+
+}
+
+.info_soldiers h1{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 1rem 0;
+    font-family: 'assistant', sans-serif;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+.info_soldiers p{
+    margin-top: 10px;
+}
+.info_soldiers h1{
+    margin-top: 10px;
+    font-family: 'Karantina', sans-serif;
+    color:#483c32;
+}
+.info_soldiers h2{
+    margin-top: 10px;
+
+}
+.info_soldiers h3{
+    margin-top: 10px;
+
+}
+.keva-tash-table{
+    display: table;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.keva-tash-table td, tr{
+    border: 0!important;
+}
+
+.keva-tash-table a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+.keva-tash-table img{
+    width: 2.5rem;
+    max-height:2.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content, .modal-caption {  
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    margin-top: 100px;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>קורס צב"י</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+        <h1 style="font-family: 'Karantina', sans-serif; color: #483c32;">קורס צב"י (צוות בגרות ייעודית)</h1>
+
+        <p>צוות בתוך קורס תג״ת להשלמת בגרויות באנגלית, מתמטיקה ולשון. דרך הבגרות הייעודית החיילים רוכשים ידע במקצועות הכרחיים למכינות ייעודיות קדם אקדמאיות, שיפתחו להם צוהר ללימודי השכלה גבוהה.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">מתכונות הקורס</h2>
+        <ul>
+            <li><strong>צב״י -8:</strong> השלמת 8 יחידות בגרות. מיועד לחיילים בעלי 12 שנות לימוד.</li>
+            <li><strong>צב״י -10:</strong> השלמת 10 יחידות בגרות. מיועד לחיילים בעלי/שאינם בעלי 12 שנות לימוד.</li>
+        </ul>
+
+        <p><strong>לפני הקורס מתקיים כנס מקדים ומיין.</strong><br>ניתן לחתום שס"ן במסגרת הקורס.<br>היציאה לקורס הינה מטכ"לית.</p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

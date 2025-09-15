@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>מידע לאנשי קבע</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <div dir="rtl" class="information" id="information" style="color: #483c32;">
+        <div dir="rtl" class="content-text" style="gap: 10px;">
+            <h1 style="margin-top: 20px; color: #483c32;font-family: 'Karantina', sans-serif;">מידע לאנשי קבע</h1>
+            <p style="margin-top: 20px;">אנשי קבע יקרים,</p>
+            <p style="margin-top: 20px;">בעמוד זה מוצג מידע אודות תכנון קבע, זכאות לדרגות, זכויות והטבות לאנשי הקבע, לימודים, שכר ועוד.</p>
+            <p style="margin-top: 20px;">באפשרותכם להוריד את קובץ זכויות משרתי הקבע העדכני לשנה"ע 2020 המצוי בתחתית העמוד.​</p>
+            <p style="margin-top: 20px;">בהצלחה רבה!</p>
+        </div>
+        <table class="keva-tash-table" style="margin-top: 2rem;"><tbody>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://wiz.medone.idf.il/MF/m/UUCSEARBGJ">
+                        <img src="icons/expense.svg" />
+                        <span>הוצאות נלוות</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://www.prat.idf.il/%d7%90%d7%aa%d7%a8-%d7%94%d7%a0%d7%95%d7%a4%d7%a9%d7%99%d7%9d/%d7%a0%d7%95%d7%a4%d7%a9%d7%99%d7%9d/">
+                        <img src="icons/beach-chair.svg" />
+                        <span>נופש</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://wiz.medone.idf.il/MF/m/QG3UBQCBNJ">
+                        <img src="icons/houses.svg" />
+                        <span>אישור תושב</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="mailto:Mofet.diyur_keva@digital.idf.il">
+                        <img src="icons/mailbox.svg" />
+                        <span>מייל תא דיור</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://one.prat.idf.il/">
+                        <img src="icons/doh1.jpg" />
+                        <span>דו״ח 1</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://wiz.medone.idf.il/MF/m/KULKM7NT9R">
+                        <img src="icons/moving-truck.svg" />
+                        <span>הובלות</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://www.prat.idf.il/?returnUrl=/%d7%94%d7%a9%d7%9b%d7%a8-%d7%a9%d7%9c%d7%99/%d7%9e%d7%99%d7%93%d7%a2-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%94%d7%98%d7%91%d7%95%d7%aa/%d7%a7%d7%91%d7%a2/%d7%94%d7%a9%d7%aa%d7%aa%d7%a4%d7%95%d7%aa-%d7%91%d7%a9%d7%9b%d7%a8-%d7%93%d7%99%d7%a8%d7%94/">
+                        <img src="icons/presentation.svg" />
+                        <span>הסבר שכ״ד</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://wiz.medone.idf.il/mf/m/83jwh4spxn">
+                        <img src="icons/rent.svg" />
+                        <span>שכ״ד</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://ishurim.prat.idf.il/">
+                        <!-- https://www.prat.idf.il/%D7%90%D7%99%D7%A9%D7%95%D7%A8%D7%99%D7%9D/ -->
+                        <img src="icons/confirmation.svg" />
+                        <span>אישורים</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://www.prat.idf.il/?returnUrl=/%d7%94%d7%a9%d7%9b%d7%a8-%d7%a9%d7%9c%d7%99/%d7%9e%d7%99%d7%93%d7%a2-%d7%96%d7%9b%d7%95%d7%99%d7%95%d7%aa-%d7%95%d7%94%d7%98%d7%91%d7%95%d7%aa/%d7%a7%d7%91%d7%a2/%d7%94%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%a0%d7%a1%d7%99%d7%a2%d7%94/">
+                        <img src="icons/bus-ticket.svg" />
+                        <span>החזרי נסיעה ותקרה ורבע</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://www.prat.idf.il/%D7%94%D7%A9%D7%9B%D7%A8-%D7%A9%D7%9C%D7%99/%D7%98%D7%A4%D7%A1%D7%99%D7%9D-%D7%9E%D7%A7%D7%95%D7%95%D7%A0%D7%99%D7%9D/%D7%94%D7%90%D7%A8%D7%9B%D7%AA-%D7%A9%D7%99%D7%A8%D7%95%D7%AA/">
+                        <img src="icons/document.svg" />
+                        <span>הארכת שירות</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://pniot.prat.idf.il/pniot/tohash/#home">
+                        <img src="icons/graduation-hat.svg" />
+                        <span>לימוד תוכ״ש</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://www.prat.idf.il/?returnUrl=/%d7%94%d7%a9%d7%9b%d7%a8-%d7%a9%d7%9c%d7%99/%d7%98%d7%a4%d7%a1%d7%99%d7%9d-%d7%9e%d7%a7%d7%95%d7%95%d7%a0%d7%99%d7%9d/%d7%94%d7%97%d7%96%d7%a8-%d7%92%d7%a0%d7%99-%d7%99%d7%9c%d7%93%d7%99%d7%9d/">
+                        <img src="icons/crayons.svg" />
+                        <span>החזר גני ילדים וקייטנות</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://www.idf.il/76751/">
+                        <img src="icons/points-card.svg" />
+                        <span>נקודות</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="mailto:Tax@mail.idf.il;%20%E2%80%8F">
+                        <img src="icons/tax.svg" />
+                        <span>מייל החזרי מס</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://www.idf.il/77143/">
+                        <img src="icons/phone.svg" />
+                        <span>מספרים חשובים</span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="https://www.hvr.co.il/home_page.aspx?page=mcc_item_new,171304">
+                        <img src="icons/health-insurance.svg" />
+                        <span>ביטוח בריאות</span>
+                    </a>
+                </td>
+                <td>
+                    <a target="_blank" href="https://www.hvr.co.il/home_page.aspx?page=mcc_item_new,171305">
+                        <img src="icons/life-insurance.svg" />
+                        <span>ביטוח חיים</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody></table>
+
+        <div style="margin-top: 13px;">
+            <h4 style="color: #483c32;">אופק שירות וסוגי קבע</h4>
+            <p><strong>קבע ראשוני</strong>: תקופת השירות הראשונה עד דרגת רס״ל כולל, שמשכה לא יעלה על 7 שנים במצטבר.</p>
+            <p><strong>קבע מובהק</strong>: תקופות שירות הקבע לאחר הקידום לדרגת הרס"ר.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">חוות דעת תקופתית</h5>
+            <p style="margin-top:13px">חוות דעת תקופתית ניתנת אחת לשנה בעבור שנת העבודה שעברה, חוו״ד הינה אמצעי מרכזי ומוביל להערכת תפקוד קצינים ונגדים. הערכת החוו״ד מתבצעת ע״י מפקד מעריך עפ״י הקטגוריות (מקצועיות, ארגון וביצוע, פיקוד, יחסי אנוש, וערכי עבודה) וכן עפ"י משוב מילולי.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">דיוני טו"פ</h5>
+            <p style="margin-top: 13px;">ניהול הקריירות בשירות הקבע נסמכות על מדידת הערכת הביצועים של משרתי הקבע באופן שיטתי, רציף ולאורך זמן.</p>
+            <p>דיוני הטו״פ (טיפוח ופיתוח) הינם כלי משלים המאפשר מעורבות מפקדים בפיתוח הקריירה של הפרט, בצמתי עיון והחלטה קבועים מראש.</p>
+            <p>הערכת תפקוד המשרתים משקפת מפת הערכה השוואתית עבור כלל הנגדים המשרתים:</p>
+            <ul>
+                <li><strong>טו״פ יעד</strong> – נגדים בוותק 2-3 שנים בקבע.</li>
+                <li><strong>טו״פ ראשוני</strong> – נגדים בוותק 4-5 שנים בקבע.</li>
+                <li><strong>טו״פ לרס״מ</strong> – נגדים בדרגת רס״ר בוותק של חמש שנים בדרגה, ובמינוי בכיר 4 שנים בדרגה.</li>
+            </ul>
+    
+            <h4 style="margin-top: 13px;    color: #483c32;">קידום בדרגות</h4>
+            <p>דרגה היא אינה זכות מוקנית, וציר קידום בדרגות מחייב עמידה בקריטריונים ובתנאים שונים בכל דרגה.</p>
+            <p>למשל, המלצת מפקד בדרגת רס״ן ומעלה, מינוי תקין בתוקף, רכישת שלב מתאים למקצוע, ומעבר הכשרה מטכ״לית מתאימה לדרגה המבוקשת.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">הכשרות מטכ"ליות</h5>
+            <p style="margin-top: 13px;">הכשרות מטכ״ליות – תנאי לדרגה ומינוי. ישנן הכשרות מטכ"ליות המהוות תנאי לקבלת דרגה.</p>
+            <p>היציאה להכשרות אלו תהיה בסמוך למועד קבלת דרגה:</p>
+            <ul>
+                <li>קורס כניסה לקבע (רס״ל) – הסמכה לתפקיד נגד בקבע ראשוני, כתנאי להמשך שירות קבע. תנאי לדרגת הרס״ל.</li>
+                <li>קורס כניסה לקבע מובהק (רס״ר) – מיועדת לנגדים בדרגת רס״ל שמהווים פוטנציאל לדרגת רס״ר. מתקיימת בבית הספר לנגדים במכללות הצבאיות.</li>
+                <li>הכשרה מובילה (רס״ם) – מיועדת לנגדים בדרגת רס״ר המתקדמים לדרגת רס״ם. מיקום ההכשרה הינו ביחידת ההסברה לנגדים בירושלים.</li>
+                <li>הכשרה בכירה (רס״ב) – מיועדת לנגדים בדרגת רס״ם המתקדמים לדרגת רס״ב. מיקום ההכשרה הינו ביחידת ההסברה לנגדים בירושלים.</li>
+                <li>פו״ם נגדים – מיועדת אשר סוכמו למינוי בכיר, מתקיימת בביה״ס לנגדים במכללות הצבאיות.</li>
+                <li>הכשרה לנגדים מצטיינים – מיועדת לנגדים מצטיינים מכלל צה״ל שייבחרו לביצוע הכשרה משמעותית לדרג הרנ״גים (טרם סוכמה ואושרה).</li>
+            </ul>
+    
+            <h4 style="margin-top: 13px;    color: #483c32;">לימודי תוכ"ש</h4>
+            <p style="margin-top:13px">לימודי תוכ״ש הינם הטבה לאיש הקבע באישור מפקדים ומחה״ס. מומלץ ואף רצוי שאיש קבע ילמד בזיקה למקצועו למען השכלה ישימה שתהווה לו תוספת שכר (השכלה ישימה ניתן לבדוק מול קצינת סגל/ מ״ע שכר ורווחה).</p>
+            <p>במידה ואיש הקבע יחליט ללמוד ללא זיקה למקצועו – לימודיו לא יהוו לו תוספת שכר.</p>
+            <p><strong>חטיבות זמן</strong>: לימודים מעבר לשעות הפעילות/ על שעות הפעילות. לימודי יום מלא ולימודים מלאים הינם חלק מהטבת תוכנית שירות.</p>
+            <p><strong>סוגי לימודים</strong>: לימודי תואר ראשון/שני, לימודי הנדסאי/טכנאי, לימודי תעודה.</p>
+    
+            <h4 style="margin-top: 13px;    color: #483c32;">שכר</h4>
+            <h5 style="margin-top: 13px;    color: #483c32;">השכלה</h5>
+            <p><strong>נגדים</strong>: תואר בזיקה (השכלה ישימה) – תוספת של 7% לשכר.</p>
+            <p><strong>קצינים</strong>: תואר בזיקה למקצוע יזכה בתוספת דצ״י; תואר ללא זיקה יזכה בתוספת מח״ר; תואר מהנדס ומדעים מדויקים מזכה בדירוג מהנדסים.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">גמול השתלמות</h5>
+            <p style="margin-top: 13px;   ">תוספת שכר המשולמת בהתאם לעמידה בקריטריונים שלהלן:</p>
+            <p><strong>גמו״ש א׳</strong>: חסרי תואר – דרגת שכר סרן/רס״ר 06. בעלי תואר – צבירת 400 שעות בקורסים מזכים בטווח 5 שנים ממועד הזכאות, 200 שעות מקצועיות + 200 שעות בזיקה לעיסוק צבאי.</p>
+            <p><strong>גמו״ש ב׳</strong>: קצינים (ללא תנאי) ונגדים (שסיימו ללמוד לפני אוקטובר 2007) בהתאם לעמידה בקריטריונים שלהלן: תואר טכנאי ומעלה, מזוכים זה מכבר בגמו״ש א׳, וצבירת 400 שעות מזכות בטווח של 5 שנים ממועד הזכאות.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">דרגה ורה-דירוג</h5>
+            <p style="margin-top: 13px;   ">דרגה – משפיעה ומעלה את גובה השכר.</p>
+            <p>רה דירוג – מרגע קבלת הדרגה כל שנתיים עליה ברה דירוג.</p>
+            <p>בעלי תואר שני – עליה ברה דירוג כל שנה.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">קבוצות שכר נגדים</h5>
+            <p style="margin-top: 13px;    ">8 קבוצות שכר המעגנות את מקצועות הנגדים ומזכות בתוספת תמריץ.</p>
+    
+            <h4 style="margin-top: 13px;    color: #483c32;">תחנות במרכז הכניסה לקבע</h4>
+            <h5 style="margin-top: 13px;    color: #483c32;">ביטוחים</h5>
+            <p style="margin-top: 13px;"><strong>ביטוח חיים (חובה)</strong> – פיצוי כספי חד פעמי במקרה מוות. מבוטחים בחברת איילון.</p>
+            <p><strong>ביטוח תאונות אישיות</strong> – פיצוי כספי חד פעמי במקרה של נכות כתוצאה מתאונה תוך כדי ועקב השירות, מבוטחים בחברת איילון.</p>
+            <p><strong>ביטוח רפואי פרטי</strong> – ביטוח בריאות פרטי, מבוטחים בחברת הפניקס.</p>
+    
+            <h5 style="margin-top: 13px;     color: #483c32;">קופות וקרן פנסיה</h5>
+            <p style="margin-top: 13px;"><strong>קופת גמל במעמד שכיר</strong> – הצטרפות אוטומטית לאחר שנה בקבע. צה״ל מפריש 6% ומשרת הקבע מפריש 6%. מנוהל בחברת מור מנורה מבטחים.</p>
+            <p><strong>קרן השתלמות</strong> – הצטרפות אוט׳ החל מהשנה השלישית בקבע. משרת הקבע מפקיד 2.5% משכר הברוטו וצה"ל מפקיד 7.5%. מנוהלת בחברת הראל.</p>
+            <p><strong>פנסיה צוברת</strong> – כל מי שהתחייב לשירות קבע החל מ- 01/01/04. הפקדה חודשית 7% ע״ח משרת הקבע ו- 13% ע״ח צה״ל.</p>
+            <p><strong>פנסיה תקציבית</strong> – תשלום 2% דמי ניהול קרן פנסיה.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">תחום האשראי</h5>
+            <p style="margin-top: 13px;">הלוואות למשרתי הקבע בתנאים ייחודיים (הלוואה הדדית, תקציבית, בנקאית). ההלוואות מטופלות מול המרכז לשירות הפרט בטלפון: <a href="tel:+97233755555">03-3755555</a>.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">רווחה</h5>
+            <p style="margin-top: 13px;"><strong>כרטיסי הטבות ״חבר״</strong>:</p>
+            <ul>
+                <li>כרטיס יהלום – כרטיס אשראי של מועדון "חבר", חוץ בנקאי, מקנה הטבות והנחות בלעדיות.</li>
+                <li>כרטיס ״חבר של קבע״ – מיועד לעמיתי ״חבר״ בלבד. משמש כאמצעי תשלום לרכישת מוצרים ברשתות מובילות. בכרטיס זה מתקבלים מענקי שי הרמטכ״ל למשרתים שנת קבע מלאה ומענק לידה לזכאים, שי לרגל יום ההולדת רכישת ספר ברשת החנויות ״סטימצקי״.</li>
+                <li>כרטיס ״טעמים״ – משמש כאמצעי תשלום לבתי קפה ומסעדות בהנחה.</li>
+            </ul>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">החזרי הוצאות נסיעה</h5>
+            <p style="margin-top: 13px;">משרת קבע המגיע עם רכבו הפרטי, זכאי להשתתפות בהוצאות נסיעה – בהתאם לרמ״פ ביחידה.</p>
+    
+            <h5 style="margin-top: 13px;    color: #483c32;">החזרי הוצאות – גנים וקייטנות</h5>
+            <p style="margin-top: 13px;"><strong>גני ילדים/ מטפלות</strong> – השתתפות בגני ילדים, תקרה של 580 ₪ מגיל 3 חודשים ועד גיל חמש בגן טרום חובה, או מטפל/ת. משולם עבור 30/06-01/09 בכל שנת לימודים.</p>
+            <p ><strong>קייטנות</strong> – משרת קבע שדווח קייטנות יקבל החזר עבור מחזור אחד בכל קיץ לילדיו מגיל 3 חודשים עד 18. תקרת השתתפות 773 ₪. במקרה ושני בני הזוג בקבע, האישה תקבל את התשלום.</p>
+    
+
+    
+            <h4>דרכי פנייה למפקד</h4>
+            <p>בכל שאלה או פנייה נוספת ניתן לפנות לק׳ משא״ן מפאו״ג - סמ״ר תהל שטאווי במייל הצבאי או בטלפון <a href="tel:+972542625929">054-2625929</a></p>
+        </div>
+    
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

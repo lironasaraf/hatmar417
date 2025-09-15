@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>גדוד 41</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section class="content" id="content">
+        <div dir="rtl" class="content-text" style="gap: 10px;">
+            <div class="info-soldiers" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px; color: #483c32; font-family:'Karantina', sans-serif;">
+                
+            <h1 style="margin-top: 20px; color: #483c32; font-family: 'Karantina', sans-serif;">גדוד 41</h1>
+         
+            <p>ההגעה למוצבים הינה על בסיס שאטל גזרתי.</p>
+        
+            <h2 style="font-family: 'Karantina', sans-serif;">דרכי הגעה</h2>
+            <p>נקודות איסוף:</p>
+            <ul>
+                <li>רכבת בית שאן</li>
+                <li>מסוף בית שאן</li>
+            </ul>
+            <p>לוח זמני שאטל נשלח למשרתים באופן פרטני ומשתנה בהתאם לצורכי המשרתים.</p>
+        
+
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

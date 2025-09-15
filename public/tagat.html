@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>תג״ת</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+        <h1 style="font-family: 'Karantina', sans-serif;color: #483c32;">קורס תג"ת (תעודת גמר תיכון)</h1>
+
+        <p>קורס שבמסגרתו ניתן להשלים 12 שנות לימוד. במהלך הקורס נלמדים המקצועות הבאים: הבנת הנקרא, חיבור, מתמטיקה, אזרחות, מחשבים, גאוגרפיה, אנגלית ולשון.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">מתכונת הקורס</h2>
+        <p>הקורס מתקיים בשתי מתכונות:</p>
+        <ul>
+            <li><strong>מתכונת פתוחה</strong><br>תג״ת ארבל: חיילים ברמה הוראתית גבוהה/בעלי זכויות הת״ש ישובצו במוקדים לפי מקום מגורים - פיקוד מרכז, פיקוד העורף, חצרים ותל נוף.</li>
+            <li><strong>מתכונת סגורה</strong><br>תג״ת אפיק: מתקיים במחו״ה אלון לחיילים הזקוקים למסגרת עוטפת.</li>
+        </ul>
+
+        <p>הקורס מתקיים בשני מחזורים:</p>
+        <ul>
+            <li>מחזור קיץ (מרץ-אוגוסט)</li>
+            <li>מחזור חורף (ספטמבר-פברואר)</li>
+        </ul>
+
+        <p><strong>לפני הקורס מתקיים כנס מקדים ממיין.</strong><br>ניתן לחתום שס״ן במסגרת הקורס.<br>היציאה לקורס הינה מטכ״לית.</p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

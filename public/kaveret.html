@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>כוורת, חד״כ וזמני ארוחות</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers" style="margin-top: 68px; font-family: 'Karantina', sans-serif; color: #483c32;;">
+        <h4 style="font-family: 'Karantina', sans-serif; color: #483c32;">כוורת / שק״לית</h4>
+        <p>ניתן לרכוש מוצרים בכוורת הגדודית.</p>
+    
+        <h4 style="font-family: 'Karantina', sans-serif; color: #483c32;">שעות הפעילות</h4>
+        <div>ימים א-ה׳:</div>
+        <ul>
+            <li>בוקר: 09:00-12:00</li>
+            <li>צהריים: 14:00-17:00</li>
+            <li>ערב: 19:00-22:00</li>
+        </ul>
+    
+        <div>ימי ו׳:</div>
+        <ul>
+            <li>בוקר: 10:00-12:30</li>
+            <li>צהריים: 13:00-14:00</li>
+        </ul>
+    
+        <h4 style="font-family: 'Karantina', sans-serif; color: #483c32;">שעות פעילות חדר כושר</h4>
+        <p>ימים א׳-ה׳<br>
+        שעות משתנות לפי מגדר ומפקדים - יש להתעדכן בלוח מחוץ לחדר הכושר</p>
+       
+    
+        <h4 style="font-family: 'Karantina', sans-serif; color: #483c32;">זמני ארוחות</h4>
+        <p>ארוחת בוקר מוגשת בין השעות 07:30-08:00.</p>
+        <p>ארוחת צהריים מוגשת בין השעות 12:00-13:00.</p>
+        <p>ארוחת ערב מוגשת בין השעות 18:00-19:00.</p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

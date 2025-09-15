@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>גדוד 47</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section class="content" id="content">
+        <div dir="rtl" class="content-text" style="gap: 10px;">
+            <div class="info-soldiers" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px; color: #483c32; font-family:'Karantina', sans-serif;">
+                
+            <h1 style="margin-top: 20px; color: #483c32; font-family: 'Karantina', sans-serif;">גדוד 47</h1>
+            
+        
+            <h2 style="font-family: 'Karantina', sans-serif;">נוהל קליטה ביחידה</h2>
+            <p>בעת קליטתך ליחידה הנך נדרש במעבר בתחנות הבאות:</p>
+            <ul>
+                <li>ביצוע לומדות דיגיטליות</li>
+                <li>ראיון קצין משא״ן</li>
+                <li>טופס טיולים נכנס ליחידה</li>
+                <li>ראיון מפקד</li>
+                <li>סקירת עמוד גדודי באתר זה ומעבר על נוהל הקליטה בגדוד</li>
+                <li>הורדת אפליקציית דוח 1</li>
+            </ul>
+        
+           
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

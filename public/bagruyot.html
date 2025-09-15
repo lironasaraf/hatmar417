@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>בגרויות</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+        <!-- מקום לתפריט -->
+        <div id="menu-placeholder"></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                fetch('menu.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('menu-placeholder').innerHTML = data;
+
+                        // המתן למעט זמן כדי לוודא שהתוכן נטען
+                        setTimeout(() => {
+                            const menuToggle = document.getElementById('menu-toggle');
+                            if (menuToggle) {
+                                menuToggle.addEventListener('click', function(event) {
+                                    const menu = document.getElementById('fixed-menu');
+                                    if (menu.style.transform === 'translateX(0%)') {
+                                        menu.style.transform = 'translateX(100%)';
+                                    } else {
+                                        menu.style.transform = 'translateX(0%)';
+                                    }
+                                    event.stopPropagation();
+                                });
+
+                                document.addEventListener('click', function(event) {
+                                    var menu = document.getElementById('fixed-menu');
+                                    if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                        menu.style.transform = 'translateX(0%)';
+                                    }
+                                });
+                            } else {
+                                console.error('menu-toggle element not found');
+                            }
+                        }, 100); // זמן המתנה קצר
+                    })
+                    .catch(error => console.error('Error loading menu:', error));
+            });
+        </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="info_soldiers">
+        <h1 style="font-family: 'Karantina', sans-serif;color: #483c32;">השלמת בגרויות פיקודית</h1>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">מתמטיקה | אנגלית</h2>
+        <p>קורס ייחודי לפיקוד המרכז בו ניתן להשלים בגרות באחד מהמקצועות הבאים: מתמטיקה 3 יחל' | אנגלית 3/5 יחל'.</p>
+        
+        <p>הקורס מתקיים במתכונת של יום בשבוע, כאשר בשאר השבוע החיילים ימשיכו את שגרת עבודתם תחת היחידה. במידת הצורך מתקיימים ימי למידה מרוכזים לקראת הבגרויות.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">מחזורי הקורס</h2>
+        <p>לקורס שני מחזורים בשנה:</p>
+        <ul>
+            <li>מחזור קיץ (מרץ-אוגוסט)</li>
+            <li>מחזור חורף (ספטמבר-פברואר)</li>
+        </ul>
+        
+        <p>ניתן להירשם לקורס דרך משרד החינוך/ שלישות ביחידה. לפני פתיחת הקורס יתקיים כנס מקדים ממיין.</p>
+
+        <h2 style="font-family: 'Karantina', sans-serif; color: #483c32;">אוכלוסיית היעד</h2>
+        <p>הקורס מיועד לחיילים חסרי בגרות במתמטיקה או אנגלית בלבד. לא ניתן לשפר בגרויות במסגרת הקורס.</p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>

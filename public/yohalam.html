@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pictures/mainlogo.png">
+    <title>יוהל״ם</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header and Menu -->
+    <header>
+       <img src="pictures/homelogo.png" alt="logo" class="logoHatmar">
+        <a href="index.html" class="logo">חטמ״ר 417</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- מקום לתפריט -->
+    <div id="menu-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('menu.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('menu-placeholder').innerHTML = data;
+
+                    // המתן למעט זמן כדי לוודא שהתוכן נטען
+                    setTimeout(() => {
+                        const menuToggle = document.getElementById('menu-toggle');
+                        if (menuToggle) {
+                            menuToggle.addEventListener('click', function(event) {
+                                const menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(0%)') {
+                                    menu.style.transform = 'translateX(100%)';
+                                } else {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                                event.stopPropagation();
+                            });
+
+                            document.addEventListener('click', function(event) {
+                                var menu = document.getElementById('fixed-menu');
+                                if (menu.style.transform === 'translateX(100%)' && !menu.contains(event.target) && event.target !== menuToggle) {
+                                    menu.style.transform = 'translateX(0%)';
+                                }
+                            });
+                        } else {
+                            console.error('menu-toggle element not found');
+                        }
+                    }, 100); // זמן המתנה קצר
+                })
+                .catch(error => console.error('Error loading menu:', error));
+        });
+    </script>
+
+    <!-- Main Content -->
+    <section dir="rtl" class="yohalam" style="font-family: 'Karantina', sans-serif; color: #483c32;">
+        <h1 style="margin: 14px;display: flex;flex-direction: column;align-items: center;font-family: 'Karantina', sans-serif; color: #483c32;">יוהל"ם: <div style="margin-bottom: 0.5rem;"></div>יועצת הרמטכ"ל לענייני מגדר</h1>
+
+        <p>צה"ל הינו מהצבאות הבודדים בעולם אשר מגייס מכוח חוק גברים ונשים כאחד. מאז הקמתו של צה"ל ועם חקיקת חוק שירות הביטחון והקמת חיל הנשים, נשים מהוות חלק מרכזי בפעילותו. עם זאת, לאורך השנים, השתלבותן ומעמדן של הנשים עבר שינויים מרחיקי לכת.</p>
+
+        <p>תפקידה של ממונת היוהל"ם הוא לטפל בנושאים הייחודים בתחום: הטרדה מינית, אפליה על רקע מיני, פקודות ייחודיות ועוד.</p>
+
+        <p>אחראית יוהל"ם חטיבתית הינה סגן נועה איוש.<br />
+        נייד: <a href="tel:+972502682277">050-2682277</a><br />
+        <!-- אימייל: <a href="mailto:yohalam.tavor@gmail.com">yohalam.tavor@gmail.com</a> -->
+        </p>
+
+        <h4 style="margin-top: 13px;    color: #483c32;">הטרדה מינית:</h4>
+        <ul>
+            <li>פגיעה על רקע מיני, הינה כל פעולה פיזית או מילולית בעלת אופי מיני, המופנית כלפי אדם שהפעולה אינה רצויה לו.</li>
+            <li>פגיעה על רקע מיני סותרת את עיקרון כבוד האדם עליו מושתתת רוח צה"ל.</li>
+            <li>פגיעה על רקע מיני יכולה להיות מכוונת גם כלפי גברים.</li>
+            <li>פגיעה על רקע מיני הינה סובייקטיבית. מה שייתפס כהטרדה בעיני חייל/ת אחד/ת, יכול שלא להיתפס כך ע"י חיילת אחרת.</li>
+        </ul>
+
+        <p><strong>סם האונס:</strong> קיימת עלייה בקורבנות של "סם האונס". זהו נוזל שקוף, חסר טעם או ריח. אין לשתות משקה כלשהו לאחר שהושאר פתוח ללא השגחה, יש להשתדל לא לנוע לבד במקומות מבודדים וחשוכים.</p>
+
+        <p><strong>אלימות בין בני זוג:</strong> הטיפול נעשה אל מול מרכז מהו"ת (פרטים ליצירת קשר בסוף העמוד).</p>
+
+        <p>המערכת הצבאית מגיבה בחומרה רבה על הטרדות מיניות, ולכן יש לפנות לגורמי הפנייה הרלוונטיים בכל אירוע.</p>
+
+        <h4 style="margin-top: 13px;    color: #483c32;">נוהל רפואת נשים:</h4>
+        <p>בלוחות המודעות אשר ברחבי היחידה וכן בתאי השירותים, ניתן למצוא מידע המפרט אודות כל רופאות הנשים הצבאיות/ אזרחיות שהצבא עובד עמן.</p>
+
+        <p>בעת <strong>היריון בלתי רצוי</strong>, יש לפנות לעו"ס באופן מיידי.</p>
+
+        <h4 style="margin-top: 13px;    color: #483c32;">דגשים לאירוע אונס:</h4>
+        <p>זמן טיפול מיידי באירוע אונס קריטי (מניעת היריון, איסוף ראיות ומניעת מחלות מידבקות).</p>
+
+        <p style="margin-top: 13px;    color: #483c32;">ניתן לפנות:<br />
+        <strong>באזור המרכז:</strong> ניתן לפנות לבי"ח וולפסון – חדר 4.<br />
+        <strong>באזור הצפון:</strong> ניתן לפנות לבי"ח פוריה או לבי"ח בני ציון.<br />
+        <strong>באזור ירושלים:</strong> בי״ח הדסה עין כרם.<br />
+        <strong>באזור הדרום:</strong> בי״ח סורוקה שבבאר שבע.</p>
+
+        <p>הפנייה לבית החולים היא <strong>ללא צורך בהפניה</strong>, והטיפול ניתן <strong>בחינם</strong>.</p>
+
+        <h4 style="margin-top: 13px;    color: #483c32;">מהו״ת</h4>
+        <p>מהו"ת (מרכז התמודדות ותמיכה) הוא מרכז המעניק טיפול רגשי, סיוע רפואי וליווי משפטי לחיילות ולחיילים בשירות חובה במקרים של פגיעה מינית, הריון לא מתוכנן ואלימות במשפחה/בקשר הזוגי. ניתן לפנות באופן ישיר למרכז, תוך שמירה על דיסקרטיות מלאה - לא נדרשת הפניה מרופא/מפקד.</p>
+
+        <p>מוקד מהו"ת זמין בכל שעות היממה במספרים:<br />
+        <a href="tel:+97239482600">03-9482600 (טלפון אזרחי)</a><br />
+        03332600 (טלפון צבאי)<br />
+        <a href="https://wa.me/972529282398" target="_blank">052-9282398 (באמצעות הWhatsApp)</a><br /></p>
+
+        <p>המייל הצבאי של המרכז:<br />
+        "מהות – מרכז התמודדות ותמיכה".</p>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
