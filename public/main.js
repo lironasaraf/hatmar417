@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
+// Firebase
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAnalytics, isSupported } from "firebase/analytics";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBcE6oFu8xGQjiMZ3AhqfsUiQi0_Rfosdk",
   authDomain: "hatmar417-2278e.firebaseapp.com",
@@ -16,64 +12,79 @@ const firebaseConfig = {
   measurementId: "G-V1NZMNH41X"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
+// אל תתני ל-Analytics להפיל את כל הסקריפט
+isSupported()
+  .then((ok) => { if (ok) { try { getAnalytics(app); } catch (e) { console.warn("Analytics init failed:", e); } } })
+  .catch((e) => console.warn("Analytics not supported:", e));
+
+// MENU
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('menu.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('menu-placeholder').innerHTML = data;
+  fetch('menu.html')
+    .then((response) => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.text();
+    })
+    .then((html) => {
+      const placeholder = document.getElementById('menu-placeholder');
+      if (!placeholder) {
+        console.error('#menu-placeholder not found');
+        return;
+      }
 
-            const menuToggle = document.getElementById('menu-toggle');
-            const menu = document.getElementById('fixed-menu');
+      placeholder.innerHTML = html;
 
-            if (menuToggle && menu) {
-                // Toggle main menu
-                menuToggle.addEventListener('click', function(event) {
-                    menu.classList.toggle('open');
-                    menu.style.display = 'block';
-                    event.stopPropagation();
-                });
+      const menuToggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('fixed-menu');
 
-                // Close menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (!menu.contains(event.target) && event.target !== menuToggle) {
-                        menu.classList.remove('open');
-                    }
-                });
-            } else {
-                console.error('Menu or menu toggle element not found');
-            }
+      if (!menu || !menuToggle) {
+        console.error('Menu or toggle not found AFTER inject');
+        return;
+      }
 
-            // Submenu toggle logic
-            const gdud41Toggle = document.getElementById('gdud41-toggle');
-            const gdud41Submenu = document.getElementById('gdud41-submenu');
-            
-            const gdud47Toggle = document.getElementById('gdud47-toggle');
-            const gdud47Submenu = document.getElementById('gdud47-submenu');
+      // פתיחה/סגירה של התפריט הראשי
+      menuToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        menu.classList.toggle('open');
+        // אם את מסתמכת על display ידני:
+        menu.style.display = menu.classList.contains('open') ? 'block' : '';
+      });
 
-            if (gdud41Toggle && gdud41Submenu) {
-                gdud41Toggle.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    gdud41Submenu.style.display = gdud41Submenu.style.display === 'block' ? 'none' : 'block';
-                    event.stopPropagation();
-                });
-            }
+      // סגירה בלחיצה מחוץ לתפריט
+      document.addEventListener('click', (event) => {
+        if (menu.classList.contains('open') && !menu.contains(event.target) && event.target !== menuToggle) {
+          menu.classList.remove('open');
+          menu.style.display = ''; // החזרה לברירת מחדל
+        }
+      });
 
-            if (gdud47Toggle && gdud47Submenu) {
-                gdud47Toggle.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    gdud47Submenu.style.display = gdud47Submenu.style.display === 'block' ? 'none' : 'block';
-                    event.stopPropagation();
-                });
-            }
-        })
-        .catch(error => console.error('Error loading menu:', error));
+      // === האצלת אירועים לתתי-תפריטים ===
+      // עובד גם אם שמות ה-IDs ישתנו, כל עוד יש class="submenu-toggle" ו-ul.submenu אחרי ה-a
+      menu.addEventListener('click', (event) => {
+        const toggle = event.target.closest('a.submenu-toggle, a#gdud41-toggle, a#gdud47-toggle');
+        if (!toggle || !menu.contains(toggle)) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const submenu = toggle.nextElementSibling;
+        if (!submenu || !submenu.classList.contains('submenu')) return;
+
+        const isOpen = submenu.style.display === 'block' || !submenu.hasAttribute('hidden');
+        // תמיכה בשתי השיטות: inline display או [hidden]
+        if (isOpen) {
+          submenu.style.display = 'none';
+          submenu.setAttribute('hidden', '');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          submenu.style.display = 'block';
+          submenu.removeAttribute('hidden');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      console.log('Menu ready: delegation attached');
+    })
+    .catch((error) => console.error('Error loading menu:', error));
 });
