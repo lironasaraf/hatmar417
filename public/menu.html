@@ -28,72 +28,64 @@
         <li><a href="nativ.html">נתיב</a></li>
         <li><a href="rishum-plili.html">מחיקת רישום פלילי</a></li>
         <li>
-            <a href="#" id="gdud41-toggle" class="submenu-toggle" aria-expanded="false">גדוד 41</a>
-            <ul id="gdud41-submenu" class="submenu" hidden>
-              <li><a href="direction41.html">דרכי הגעה</a></li>
-              <li><a href="magad41.html">דבר מפקד הגדוד</a></li>
-              <li><a href="klita41.html">נוהל קליטה ביחידה</a></li>
-              <li><a href="opentime41.html">זמני פתיחה</a></li>
+            <a href="#" id="gdud41-toggle">גדוד 41</a>
+            <ul id="gdud41-submenu" class="submenu" >
+                <li><a href="direction41.html">דרכי הגעה</a></li>
+                <li><a href="magad41.html">דבר מפקד הגדוד</a></li>
+                <li><a href="klita41.html">נוהל קליטה ביחידה</a></li>
+                <li><a href="opentime41.html">זמני פתיחה</a></li>
             </ul>
-          </li>
-          <li>
-            <a href="#" id="gdud47-toggle" class="submenu-toggle" aria-expanded="false">גדוד 47</a>
-            <ul id="gdud47-submenu" class="submenu" hidden>
-              <li><a href="direction47.html">דרכי הגעה</a></li>
-              <li><a href="magad47.html">דבר מפקד הגדוד</a></li>
-              <li><a href="klita47.html">נוהל קליטה ביחידה</a></li>
-              <li><a href="opentime47.html">זמני פתיחה</a></li>
+        </li>
+        <li>
+            <a href="#" id="gdud47-toggle">גדוד 47</a>
+            <ul id="gdud47-submenu" class="submenu" >
+                <li><a href="direction47.html">דרכי הגעה</a></li>
+                <li><a href="magad47.html">דבר מפקד הגדוד</a></li>
+                <li><a href="klita47.html">נוהל קליטה ביחידה</a></li>
+                <li><a href="opentime47.html">זמני פתיחה</a></li>
             </ul>
-          </li>
-          
+        </li>
     </ul>
 </nav>
 
 <!-- JavaScript code -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ===== תפריט ראשי =====
-      const menuToggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('fixed-menu');
-    
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function (event) {
-          event.stopPropagation();
-          menu.classList.toggle('open');
+document.addEventListener('DOMContentLoaded', function () {
+    // Main menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('fixed-menu');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function(event) {
+            menu.classList.toggle('open');
+            event.stopPropagation();
         });
-    
-        document.addEventListener('click', function (event) {
-          if (menu.classList.contains('open') && !menu.contains(event.target) && event.target !== menuToggle) {
-            menu.classList.remove('open');
-          }
+
+        document.addEventListener('click', function(event) {
+            if (menu.classList.contains('open') && !menu.contains(event.target) && event.target !== menuToggle) {
+                menu.classList.remove('open');
+            }
         });
-      }
+    }
+
+    // Submenu toggles
+    const gdud41Toggle = document.getElementById('gdud41-toggle');
+    const gdud41Submenu = document.getElementById('gdud41-submenu');
     
-      // ===== תתי-תפריטים (האצלת אירועים) =====
-      menu.addEventListener('click', function (event) {
-        const toggle = event.target.closest('a.submenu-toggle');
-        if (!toggle) return;
-    
-        event.preventDefault();     // אל תקפצי לראש העמוד בגלל href="#"
-        event.stopPropagation();    // שלא יבעבע לעוד מאזינים
-    
-        // מוצאים את ה-UL הבא ברשימה (תת-התפריט)
-        const submenu = toggle.nextElementSibling;
-        if (!submenu || !submenu.classList.contains('submenu')) return;
-    
-        const isOpen = !submenu.hasAttribute('hidden');
-        // סוגרים/פותחים
-        if (isOpen) {
-          submenu.setAttribute('hidden', '');
-          toggle.setAttribute('aria-expanded', 'false');
-        } else {
-          submenu.removeAttribute('hidden');
-          toggle.setAttribute('aria-expanded', 'true');
-        }
-      });
+    const gdud47Toggle = document.getElementById('gdud47-toggle');
+    const gdud47Submenu = document.getElementById('gdud47-submenu');
+
+    gdud41Toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        gdud41Submenu.style.display = gdud41Submenu.style.display === 'block' ? 'none' : 'block';
     });
-    </script>
-    
+
+    gdud47Toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        gdud47Submenu.style.display = gdud47Submenu.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>
 
 </body>
 </html>

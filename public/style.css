@@ -211,7 +211,7 @@ body {
     transition: transform 0.3s ease-in-out;
     align-items: flex-start;
     overflow: auto;
-    z-index: 99900000;
+
 }
 
 .fixed-menu ul {
